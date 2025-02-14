@@ -56,33 +56,22 @@
             font-size: 1.2em;
             line-height: 1.6;
             color: black;
-            position: relative;
             text-align: left;
-            animation: aparecer 1s ease-in-out;
-        }
-        @keyframes aparecer {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            overflow-y: auto;
+            max-height: 80vh;
+            position: relative;
         }
         .texto {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid black;
-            width: 0;
-            animation: escribir 4s steps(40) forwards;
+            display: none;
             font-family: 'Dancing Script', cursive;
             font-size: 1.3em;
+            margin-bottom: 10px;
         }
         .flores {
             margin-top: 20px;
             font-size: 2em;
             text-align: center;
             animation: florecer 2s ease-in-out infinite alternate;
-        }
-        @keyframes escribir {
-            from { width: 0; }
-            to { width: 100%; }
         }
         @keyframes florecer {
             from { transform: scale(1); }
@@ -92,7 +81,17 @@
     <script>
         function abrirCarta() {
             document.querySelector('.sobre-container').style.display = 'none';
-            document.querySelector('.carta').style.display = 'block';
+            const carta = document.querySelector('.carta');
+            carta.style.display = 'block';
+            mostrarTexto(0);
+        }
+        function mostrarTexto(index) {
+            const partes = document.querySelectorAll('.texto');
+            if (index < partes.length) {
+                partes[index].style.display = 'block';
+                partes[index].scrollIntoView({ behavior: 'smooth', block: 'end' });
+                setTimeout(() => mostrarTexto(index + 1), 2000);
+            }
         }
     </script>
 </head>
@@ -101,21 +100,15 @@
         <div class="sobre" onclick="abrirCarta()">📩 Presiona para abrir</div>
     </div>
     <div class="carta">
-        <p class="texto">Holiiii, soy Mel, sorpresa!!
-          
-          No sé exactamente cómo empezar esto, pero quiero decirte algo que quizás no menciono lo suficiente o tal vez sí jajaj pero igual, gracias.
-
-Gracias por cada conversación, por tu tiempo, por ser como eres. A veces la vida nos pone caminos inciertos, momentos de dudas y retos que parecen demasiado grandes. Pero si hay alguien capaz de superarlos, eres tú.
-
-Tienes más fuerza de la que crees, más luz de la que imaginas. A veces el camino se siente pesado, lo sé, pero recuerda que cada paso que das, incluso los pequeños, cuentan. No tienes que correr todo el tiempo, a veces solo hace falta respirar y seguir.
-
-Quiero que sepas que hay muchas cosas para admirar de ti. Que aunque las palabras a veces no alcancen, aquí estoy para recordarte que vales, que eres increíble y que mereces todo lo bueno que venga.
-
-Hoy, en este Día de San Valentín y de la Amistad, quiero que recibas un poquito de ese cariño que el mundo tiene para ti. No sé qué nos depara el destino, pero sí sé que deseo que encuentres la felicidad en cada rincón, en cada día, en cada pequeña victoria.
-
-Ánimo, sigue adelante. Estoy segura de que puedes con todo.
-
-Feliz día 💚🌟 💚🌟</p>
+        <p class="texto">Holiiii, soy Mel, sorpresa!!</p>
+        <p class="texto">No sé exactamente cómo empezar esto, pero quiero decirte algo que quizás no menciono lo suficiente o tal vez sí jajaj pero igual, gracias.</p>
+        <p class="texto">Gracias por cada conversación, por tu tiempo, por ser como eres. A veces la vida nos pone caminos inciertos, momentos de dudas y retos que parecen demasiado grandes. Pero si hay alguien capaz de superarlos, eres tú.</p>
+        <p class="texto">Tienes más fuerza de la que crees, más luz de la que imaginas. A veces el camino se siente pesado, lo sé, pero recuerda que cada paso que das, incluso los pequeños, cuentan. No tienes que correr todo el tiempo, a veces solo hace falta respirar y seguir.</p>
+        <p class="texto">Quiero que sepas que hay muchas cosas para admirar de ti. Que aunque las palabras a veces no alcancen, aquí estoy para recordarte que vales, que eres increíble y que mereces todo lo bueno que venga.</p>
+        <p class="texto">Hoy, en este Día de San Valentín y de la Amistad, quiero que recibas un poquito de ese cariño que el mundo tiene para ti. No sé qué nos depara el destino, pero sí sé que deseo que encuentres la felicidad en cada rincón, en cada día, en cada pequeña victoria.</p>
+        <p class="texto">Ánimo, sigue adelante. Estoy segura de que puedes con todo.</p>
+        <p class="texto">Feliz día pichurriiiis💚🌟 💚🌟</p>
+        <p class="texto">PD: Chocalas choooocalas jajaja :D</p>
         <div class="flores">💙🌸💙🌸💙</div>
     </div>
 </body>
