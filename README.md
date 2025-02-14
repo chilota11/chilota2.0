@@ -11,7 +11,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: 'Georgia', serif;
+            font-family: 'Arial', sans-serif;
             color: white;
             text-align: center;
             overflow: hidden;
@@ -63,7 +63,7 @@
         }
         .texto {
             display: none;
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Arial', sans-serif;
             font-size: 1.3em;
             margin-bottom: 10px;
         }
